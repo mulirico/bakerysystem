@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <main class="main">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+        </br>
+            {{ form.customer.label }}
+            {{ form.customer }}
+        </br>
+            {{ form.submit }}
+        </form>
+        <br>
+        {% for customer in customers %}
+            {{ customer.name }} - <a href="{{ url_for('delete', id=customer.id)}}">Delete</a><br>
+        {% endfor %}
+    </main>
+{%endblock%}

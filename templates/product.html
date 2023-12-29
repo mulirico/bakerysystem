@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <main class="main">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+        </br>
+            {{ form.product_f.label }}
+            {{ form.product_f }}
+        </br>
+            {{ form.submit }}
+        </form>
+        <br>
+        {% for product in products %}
+        {{ product.name }} - <a href="{{ url_for('rmvproduct', id=product.id)}}">Delete</a><br>
+    {% endfor %}
+    </main>
+{%endblock%}

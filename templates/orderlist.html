@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+{% for order in orders %}
+<div class="order">
+    <h5>Order #{{ order.id }}</h2>
+    <p><strong>Delivery Date:</strong> {{ order.delivery_date }}</p>
+    <p><strong>Customer:</strong> {{ order.name }}</p>
+    <p><strong>Delivery:</strong> {% if order.delivery %}Yes{% else %}No{% endif %}</p>
+    <p><strong>Warning:</strong> {{ order.warning }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in grouped_products[order.id] %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button class="btnRmv">Pronto</button>
+    <br>
+</br>
+</div>
+{% endfor %}
+<button id="btnShow">Mostrar todos</button>
+<script src="static/js/orderlist.js"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+    <form id="orderForm" action="/addorder" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.customer.label }}
+        {{ form.customer (class="customer")}}
+        <br>
+        {{ form.product.label }}
+        {{ form.product (class="product") }}
+        {{ form.quantity.label }}
+        {{ form.quantity (class='quantity') }}
+        <button id="addBtn" type="button">+</button>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>-</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        {{ form.ready.label }}
+        {{ form.ready (class="ready")}}
+        {{ form.delivery.label }}
+        {{ form.delivery (class="delivery")}}
+        <br>
+        {{ form.notes.label }}
+        {{ form.notes (class="notes")}}
+        <br>
+        {{ form.submit (id="submitBtn") }}
+    </form>
+
+    <script src="/static/js/addorder.js" defer></script>
+{% endblock %}
